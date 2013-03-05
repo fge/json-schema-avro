@@ -1,0 +1,82 @@
+[
+    {
+        "avroSchema": {
+            "type": "record",
+            "name": "LongList",
+            "aliases": ["LinkedLongs"],
+            "fields": [
+                {
+                    "name": "value",
+                    "type": "long"
+                },
+                {
+                    "name": "next",
+                    "type": ["LongList", "null"]
+                }
+            ]
+        },
+        "jsonSchema": {
+            "$ref": "#/definitions/record:LongList",
+            "definitions": {
+                "record:LongList": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [ "value", "next" ],
+                    "properties": {
+                        "value": {
+                            "type": "integer",
+                            "minimum": -9223372036854775808,
+                            "maximum": 9223372036854775807
+                        },
+                        "next": {
+                            "oneOf": [
+                                { "$ref": "#/definitions/record:LongList" },
+                                { "type": "null" }
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+    },
+    {
+        "avroSchema": {
+            "type": "record",
+            "name": "foo",
+            "fields": []
+        },
+        "jsonSchema": {
+            "$ref": "#/definitions/record:foo",
+            "definitions": {
+                "record:foo": { "enum": [ {} ] }
+            }
+        }
+    },
+    {
+        "avroSchema": {
+            "type": "record",
+            "name": "bar",
+            "fields": [
+                { "name": "moo", "type": "int", "default": -1 }
+            ]
+        },
+        "jsonSchema": {
+            "$ref": "#/definitions/record:bar",
+            "definitions": {
+                "record:bar": {
+                    "type": "object",
+                    "required": [ "moo" ],
+                    "additionalProperties": false,
+                    "properties": {
+                        "moo": {
+                            "type": "integer",
+                            "minimum": -2147483648,
+                            "maximum": 2147483647,
+                            "default": -1
+                        }
+                    }
+                }
+            }
+        }
+    }
+]

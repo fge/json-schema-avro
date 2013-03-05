@@ -1,0 +1,26 @@
+[
+    {
+        "jsonSchema": {
+            "enum": [ "v1", "v2", "v3" ]
+        },
+        "avroSchema": {
+            "type": "enum",
+            "symbols": [ "v1", "v2", "v3" ],
+            "name": "enum0"
+        }
+    },
+    {
+        "jsonSchema": {
+            "type": "array",
+            "items": { "enum": [ "a", "b", "c" ] }
+        },
+        "avroSchema": {
+            "type": "array",
+            "items": {
+                "type": "enum",
+                "name": "enum0",
+                "symbols": [ "a", "b", "c" ]
+            }
+        }
+    }
+]

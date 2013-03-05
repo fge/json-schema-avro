@@ -1,0 +1,33 @@
+[
+    {
+        "avroSchema": [
+            { "type": "string" },
+            "null",
+            {
+                "type": "map",
+                "values": {
+                    "type": "enum",
+                    "name": "gender",
+                    "symbols": [ "MALE", "FEMALE", "WHOCARES" ]
+                }
+            }
+        ],
+        "jsonSchema": {
+            "oneOf": [
+                { "type": "string" },
+                { "type": "null" },
+                {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/definitions/enum:gender"
+                    }
+                }
+            ],
+            "definitions": {
+                "enum:gender": {
+                    "enum": [ "MALE", "FEMALE", "WHOCARES" ]
+                }
+            }
+        }
+    }
+]

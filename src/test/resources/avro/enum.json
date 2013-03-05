@@ -1,0 +1,38 @@
+[
+    {
+        "avroSchema": {
+            "name": "gender",
+            "type": "enum",
+            "symbols": [ "MALE", "FEMALE", "WHOCARES" ]
+        },
+        "jsonSchema": {
+            "$ref": "#/definitions/enum:gender",
+            "definitions": {
+                "enum:gender": {
+                    "enum": [ "MALE", "FEMALE", "WHOCARES" ]
+                }
+            }
+        }
+    },
+    {
+        "avroSchema": {
+            "type": "map",
+            "values": {
+                "name": "gender",
+                "type": "enum",
+                "symbols": [ "MALE", "FEMALE", "WHOCARES" ]
+            }
+        },
+        "jsonSchema": {
+            "type": "object",
+            "additionalProperties": {
+                "$ref": "#/definitions/enum:gender"
+            },
+            "definitions": {
+                "enum:gender": {
+                    "enum": [ "MALE", "FEMALE", "WHOCARES" ]
+                }
+            }
+        }
+    }
+]

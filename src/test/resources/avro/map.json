@@ -1,0 +1,33 @@
+[
+    {
+        "avroSchema": {
+            "type": "map",
+            "values": "boolean"
+        },
+        "jsonSchema": {
+            "type": "object",
+            "additionalProperties": {
+                "type": "boolean"
+            }
+        }
+    },
+    {
+        "avroSchema": {
+            "type": "map",
+            "values": {
+                "type": "map",
+                "values": "bytes"
+            }
+        },
+        "jsonSchema": {
+            "type": "object",
+            "additionalProperties": {
+                "type": "object",
+                "additionalProperties": {
+                    "type": "string",
+                    "pattern": "^[\u0000-\u00ff]*$"
+                }
+            }
+        }
+    }
+]

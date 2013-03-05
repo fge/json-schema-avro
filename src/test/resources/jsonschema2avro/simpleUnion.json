@@ -1,0 +1,42 @@
+[
+    {
+        "jsonSchema": {
+            "anyOf": [
+                { "type": "null" },
+                { "enum": [ "v1", "v2" ] }
+            ]
+        },
+        "avroSchema": [
+            "null",
+            {
+                "type": "enum",
+                "name": "enum0",
+                "symbols": [ "v1", "v2" ]
+            }
+        ]
+    },
+    {
+        "jsonSchema": {
+            "oneOf": [
+                { "type": "string" },
+                {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": { "type": "number" }
+                    }
+                }
+            ]
+        },
+        "avroSchema": [
+            "string",
+            {
+                "type": "array",
+                "items": {
+                    "type": "map",
+                    "values": "double"
+                }
+            }
+        ]
+    }
+]

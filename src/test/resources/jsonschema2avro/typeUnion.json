@@ -1,0 +1,21 @@
+[
+    {
+        "jsonSchema": {
+            "type": [ "string", "number" ]
+        },
+        "avroSchema": [ "string", "double" ]
+    },
+    {
+        "jsonSchema": {
+            "type": [ "null", "array" ],
+            "items": { "type": "string" }
+        },
+        "avroSchema": [
+            "null",
+            {
+                "type": "array",
+                "items": "string"
+            }
+        ]
+    }
+]

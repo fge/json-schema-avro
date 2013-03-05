@@ -1,0 +1,44 @@
+[
+    {
+        "avroSchema": {
+            "type": "fixed",
+            "name": "md5",
+            "size": 16
+        },
+        "jsonSchema": {
+            "$ref": "#/definitions/fixed:md5",
+            "definitions": {
+                "fixed:md5": {
+                    "type": "string",
+                    "pattern": "^[\u0000-\u00ff]*$",
+                    "minLength": 16,
+                    "maxLength": 16
+                }
+            }
+        }
+    },
+    {
+        "avroSchema": {
+            "type": "map",
+            "values": {
+                "type": "fixed",
+                "name": "md5",
+                "size": 16
+            }
+        },
+        "jsonSchema": {
+            "type": "object",
+            "additionalProperties": {
+                "$ref": "#/definitions/fixed:md5"
+            },
+            "definitions": {
+                "fixed:md5": {
+                    "type": "string",
+                    "pattern": "^[\u0000-\u00ff]*$",
+                    "minLength": 16,
+                    "maxLength": 16
+                }
+            }
+        }
+    }
+]

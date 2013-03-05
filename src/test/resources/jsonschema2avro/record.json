@@ -1,0 +1,39 @@
+[
+    {
+        "jsonSchema": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": { "type": "integer" },
+                "name": { "type": "string" },
+                "type": { "enum": [ "food", "drink" ] },
+                "tags": {
+                    "type": "array",
+                    "items": { "type": "string" }
+                }
+            }
+        },
+        "avroSchema": {
+            "type": "record",
+            "name": "record0",
+            "fields": [
+                { "name": "id", "type": "long" },
+                { "name": "name", "type": "string" },
+                {
+                    "name": "tags",
+                    "type": {
+                        "type": "array", "items": "string"
+                    }
+                },
+                {
+                    "name": "type",
+                    "type": {
+                        "type": "enum",
+                        "name": "enum0",
+                        "symbols": [ "food", "drink" ]
+                    }
+                }
+            ]
+        }
+    }
+]

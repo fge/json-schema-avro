@@ -1,0 +1,24 @@
+[
+    {
+        "avroSchema": "null",
+        "jsonSchema": { "type": "null" }
+    },
+    {
+        "avroSchema": "boolean",
+        "jsonSchema": { "type": "boolean" }
+    },
+    {
+        "avroSchema": "long",
+        "jsonSchema": {
+            "type": "integer"
+        }
+    },
+    {
+        "avroSchema": "double",
+        "jsonSchema": { "type": "number" }
+    },
+    {
+        "avroSchema": "string",
+        "jsonSchema": { "type": "string" }
+    }
+]

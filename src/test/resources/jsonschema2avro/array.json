@@ -1,0 +1,38 @@
+[
+    {
+        "jsonSchema": {
+            "type": "array",
+            "items": { "type": "integer" }
+        },
+        "avroSchema": {
+            "type": "array",
+            "items": "long"
+        }
+    },
+    {
+        "jsonSchema": {
+            "type": "array",
+            "additionalItems": { "type": "null" }
+        },
+        "avroSchema": {
+            "type": "array",
+            "items": "null"
+        }
+    },
+    {
+        "jsonSchema": {
+            "type": "array",
+            "items": {
+                "type": "array",
+                "items": { "type": "string" }
+            }
+        },
+        "avroSchema": {
+            "type": "array",
+            "items": {
+                "type": "array",
+                "items": "string"
+            }
+        }
+    }
+]
