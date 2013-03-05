@@ -3,6 +3,8 @@
 <p>The license of this project is LGPLv3 or later. See file src/main/resources/LICENSE for the full
 text.</p>
 
+<p>The current version is <b>0.1</b>.</p>
+
 <h1>What this is</h1>
 
 <p>This package contains two processors (see <a
@@ -63,8 +65,6 @@ There are two reasons for this:</p>
 into the corresponding Avro type.</p>
 
 <h1>Maven artifact</h1>
-
-<p><i>Coming soon; for now, no version is published</i></p>
 
 <p>Replace <tt>your-version-here</tt> with the appropriate version:</p>
 
