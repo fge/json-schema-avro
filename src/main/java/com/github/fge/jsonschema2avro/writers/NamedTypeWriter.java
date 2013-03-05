@@ -5,9 +5,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 public abstract class NamedTypeWriter
     extends AvroWriter
 {
-    protected static final String NAMESPACE
-        = "com.github.fge.jsonschema2avro";
-
     private final String typeName;
     private final AtomicInteger nameIndex = new AtomicInteger(0);
 
