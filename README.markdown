@@ -17,9 +17,12 @@ Schemas, and the reverse.</p>
 are self contained. The generated JSON Schemas can accurately validate JSON representations of Avro
 data with two exceptions:</p>
 
-* as JSON has no notion of order, the `order` property of Avro records is not enforced;
-* Avro's `float` and `double` are validated as JSON numbers, with no minimum or
-  maximum, see below as to why. Note however that `int` and `long`'s limits _are_ enforced.
+* as JSON has no notion of order, the <span style="font-family: monospace;">order</span> property of
+  Avro records is not enforced;
+* Avro's <span style="font-family: monospace;">float</span> and <span
+  style="font-family: monospace;">double</span> are validated as JSON numbers, with no minimum or
+  maximum, see below as to why. Note however that <span style="font-family: monospace;">int</span>
+  and <span style="font-family: monospace;">long</span>'s limits _are_ enforced.
 
 <p>Note that this processor is demoed online <a
 href="http://json-schema-validator.herokuapp.com/avro.jsp">here</a>.</p>
@@ -38,18 +41,22 @@ Schema usages.</p>
 
 <p>This processor is not available online yet; it will soon be.</p>
 
-<h1>Why limits are not enforced on Avro's `float` and `double`</h1>
+<h1>Why limits are not enforced on Avro's <span style="font-family: monospace;">float</span> and
+<span style="font-family: monospace;">double</span></h1>
 
-<p>While JSON Schema has `minimum` and `maximum` to enforce the minimum and maximum values of a JSON
+<p>While JSON Schema has <span style="font-family: monospace;">minimum</span> and <span
+style="font-family: monospace;">maximum</span> to enforce the minimum and maximum values of a JSON
 number, JSON numbers (<a href="http://tools.ietf.org/html/rfc4627">RFC 4627, section 2.4</a>) do not
 define any limit to the scale and/or precision of numbers.</p>
 
-<p>That is a first reason, but then one should ask why then, are there limits for `int` and `long`.
+<p>That is a first reason, but then one should ask why then, are there limits for <span
+style="font-family: monospace;">int</span> and <span style="font-family: monospace;">long</span>.
 There are two reasons for this:</p>
 
 * JSON Schema defines integer (as a number with no fractional and/or exponent part); integer being a
   discrete domain, such limits can therefore be defined without room for error;
-* but Avro's `float` and `double` are IEEE 754 floating point numbers; they do have minimums and
+* but Avro's <span style="font-family: monospace;">float</span> and <span
+  style="font-family: monospace;">double</span> are IEEE 754 floating point numbers; they do have minimums and
   maximums, but 0.1, for instance, cannot even be represented exactly in a double.
 
 <p>Defining limits would therefore not ensure that the JSON number being validated can indeed fit
