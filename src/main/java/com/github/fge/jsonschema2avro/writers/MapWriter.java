@@ -2,9 +2,9 @@ package com.github.fge.jsonschema2avro.writers;
 
 import com.github.fge.jsonschema.exceptions.ProcessingException;
 import com.github.fge.jsonschema.jsonpointer.JsonPointer;
-import com.github.fge.jsonschema.processors.data.SchemaHolder;
 import com.github.fge.jsonschema.report.ProcessingReport;
 import com.github.fge.jsonschema.tree.SchemaTree;
+import com.github.fge.jsonschema.util.ValueHolder;
 import com.github.fge.jsonschema2avro.AvroWriterProcessor;
 import org.apache.avro.Schema;
 
@@ -30,7 +30,9 @@ public final class MapWriter
         final ProcessingReport report, final SchemaTree tree)
         throws ProcessingException
     {
-        final SchemaHolder input = new SchemaHolder(tree.append(POINTER));
+        final SchemaTree schemaTree = tree.append(POINTER);
+        final ValueHolder<SchemaTree> input
+            = ValueHolder.hold("schema", schemaTree);
         final Schema valueSchema = writer.process(report, input).getValue();
         return Schema.createMap(valueSchema);
     }

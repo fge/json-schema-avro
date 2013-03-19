@@ -2,9 +2,9 @@ package com.github.fge.jsonschema2avro.writers;
 
 import com.github.fge.jsonschema.exceptions.ProcessingException;
 import com.github.fge.jsonschema.jsonpointer.JsonPointer;
-import com.github.fge.jsonschema.processors.data.SchemaHolder;
 import com.github.fge.jsonschema.report.ProcessingReport;
 import com.github.fge.jsonschema.tree.SchemaTree;
+import com.github.fge.jsonschema.util.ValueHolder;
 import com.github.fge.jsonschema2avro.AvroWriterProcessor;
 import com.google.common.collect.Lists;
 import org.apache.avro.Schema;
@@ -33,12 +33,12 @@ public final class RecordWriter
         final List<Schema.Field> fields = Lists.newArrayList();
 
         JsonPointer ptr;
-        SchemaHolder holder;
+        ValueHolder<SchemaTree> holder;
         Schema fieldSchema;
 
         for (final String name: list) {
             ptr = JsonPointer.of("properties", name);
-            holder = new SchemaHolder(tree.append(ptr));
+            holder = ValueHolder.hold("schema", tree.append(ptr));
             fieldSchema = writer.process(report, holder).getValue();
             fields.add(new Schema.Field(name, fieldSchema, null, null));
         }

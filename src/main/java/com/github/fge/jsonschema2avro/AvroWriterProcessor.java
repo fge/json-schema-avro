@@ -3,8 +3,8 @@ package com.github.fge.jsonschema2avro;
 import com.github.fge.jsonschema.exceptions.ProcessingException;
 import com.github.fge.jsonschema.processing.Processor;
 import com.github.fge.jsonschema.processing.ProcessorSelector;
-import com.github.fge.jsonschema.processors.data.SchemaHolder;
 import com.github.fge.jsonschema.report.ProcessingReport;
+import com.github.fge.jsonschema.tree.SchemaTree;
 import com.github.fge.jsonschema.util.ValueHolder;
 import com.github.fge.jsonschema2avro.writers.ArrayWriter;
 import com.github.fge.jsonschema2avro.writers.EnumWriter;
@@ -18,7 +18,7 @@ import org.apache.avro.Schema;
 import static com.github.fge.jsonschema2avro.predicates.AvroPredicates.*;
 
 public final class AvroWriterProcessor
-    implements Processor<SchemaHolder, ValueHolder<Schema>>
+    implements Processor<ValueHolder<SchemaTree>, ValueHolder<Schema>>
 {
     private final Processor<AvroPayload, ValueHolder<Schema>> processor;
 
@@ -37,7 +37,7 @@ public final class AvroWriterProcessor
 
     @Override
     public ValueHolder<Schema> process(final ProcessingReport report,
-        final SchemaHolder input)
+        final ValueHolder<SchemaTree> input)
         throws ProcessingException
     {
         final AvroPayload payload = new AvroPayload(input.getValue(), this);

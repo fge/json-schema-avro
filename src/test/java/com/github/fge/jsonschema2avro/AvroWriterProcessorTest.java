@@ -2,11 +2,11 @@ package com.github.fge.jsonschema2avro;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.fge.jsonschema.exceptions.ProcessingException;
-import com.github.fge.jsonschema.processors.data.SchemaHolder;
 import com.github.fge.jsonschema.report.ProcessingReport;
 import com.github.fge.jsonschema.tree.CanonicalSchemaTree;
 import com.github.fge.jsonschema.tree.SchemaTree;
 import com.github.fge.jsonschema.util.JsonLoader;
+import com.github.fge.jsonschema.util.ValueHolder;
 import com.google.common.collect.Lists;
 import org.apache.avro.Schema;
 import org.testng.annotations.BeforeMethod;
@@ -61,7 +61,7 @@ public abstract class AvroWriterProcessorTest
         throws ProcessingException
     {
         final SchemaTree tree = new CanonicalSchemaTree(schema);
-        final SchemaHolder input = new SchemaHolder(tree);
+        final ValueHolder<SchemaTree> input = ValueHolder.hold("schema", tree);
         final Schema expected = new Schema.Parser().parse(avro.toString());
 
         final Schema actual = processor.process(report, input).getValue();

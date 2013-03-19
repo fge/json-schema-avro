@@ -3,11 +3,11 @@ package com.github.fge.avro;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.fge.jsonschema.cfg.ValidationConfiguration;
 import com.github.fge.jsonschema.exceptions.ProcessingException;
-import com.github.fge.jsonschema.processors.data.SchemaHolder;
 import com.github.fge.jsonschema.processors.syntax.SyntaxValidator;
 import com.github.fge.jsonschema.report.DevNullProcessingReport;
 import com.github.fge.jsonschema.report.ProcessingReport;
 import com.github.fge.jsonschema.tree.JsonTree;
+import com.github.fge.jsonschema.tree.SchemaTree;
 import com.github.fge.jsonschema.tree.SimpleJsonTree;
 import com.github.fge.jsonschema.util.JsonLoader;
 import com.github.fge.jsonschema.util.ValueHolder;
@@ -72,7 +72,7 @@ public abstract class AvroTranslationsTest
         final ValueHolder<JsonTree> input
             = ValueHolder.<JsonTree>hold(new SimpleJsonTree(avroSchema));
 
-        final SchemaHolder output = PROCESSOR.process(report, input);
+        final ValueHolder<SchemaTree> output = PROCESSOR.process(report, input);
         assertEquals(output.getValue().getBaseNode(), jsonSchema);
 
         assertTrue(VALIDATOR.schemaIsValid(jsonSchema));

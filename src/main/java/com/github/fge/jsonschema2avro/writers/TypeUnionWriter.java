@@ -4,10 +4,10 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.github.fge.jsonschema.exceptions.ProcessingException;
-import com.github.fge.jsonschema.processors.data.SchemaHolder;
 import com.github.fge.jsonschema.report.ProcessingReport;
 import com.github.fge.jsonschema.tree.CanonicalSchemaTree;
 import com.github.fge.jsonschema.tree.SchemaTree;
+import com.github.fge.jsonschema.util.ValueHolder;
 import com.github.fge.jsonschema2avro.AvroWriterProcessor;
 import com.google.common.collect.Lists;
 import org.apache.avro.Schema;
@@ -38,18 +38,18 @@ public final class TypeUnionWriter
         final JsonNode node = tree.getNode();
         final List<Schema> schemas = Lists.newArrayList();
 
-        for (final SchemaHolder holder: expand(node))
+        for (final ValueHolder<SchemaTree> holder: expand(node))
             schemas.add(writer.process(report, holder).getValue());
 
         return Schema.createUnion(schemas);
     }
 
-    private static List<SchemaHolder> expand(final JsonNode node)
+    private static List<ValueHolder<SchemaTree>> expand(final JsonNode node)
     {
         final ObjectNode common = node.deepCopy();
         final ArrayNode typeNode = (ArrayNode) common.remove("type");
 
-        final List<SchemaHolder> ret = Lists.newArrayList();
+        final List<ValueHolder<SchemaTree>> ret = Lists.newArrayList();
 
         ObjectNode schema;
         SchemaTree tree;
@@ -58,7 +58,7 @@ public final class TypeUnionWriter
             schema = common.deepCopy();
             schema.put("type", element);
             tree = new CanonicalSchemaTree(schema);
-            ret.add(new SchemaHolder(tree));
+            ret.add(ValueHolder.hold("schema", tree));
         }
 
         return ret;

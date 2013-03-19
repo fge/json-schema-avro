@@ -3,9 +3,9 @@ package com.github.fge.jsonschema2avro.writers;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.fge.jsonschema.exceptions.ProcessingException;
 import com.github.fge.jsonschema.jsonpointer.JsonPointer;
-import com.github.fge.jsonschema.processors.data.SchemaHolder;
 import com.github.fge.jsonschema.report.ProcessingReport;
 import com.github.fge.jsonschema.tree.SchemaTree;
+import com.github.fge.jsonschema.util.ValueHolder;
 import com.github.fge.jsonschema2avro.AvroWriterProcessor;
 import com.google.common.collect.Lists;
 import org.apache.avro.Schema;
@@ -36,14 +36,14 @@ public final class SimpleUnionWriter
         final int size = node.get(keyword).size();
 
         JsonPointer ptr;
-        SchemaHolder holder;
+        ValueHolder<SchemaTree> holder;
         Schema subSchema;
 
         final List<Schema> schemas = Lists.newArrayList();
 
         for (int index = 0; index < size; index++) {
             ptr = JsonPointer.of(keyword, index);
-            holder = new SchemaHolder(tree.append(ptr));
+            holder = ValueHolder.hold("schema", tree.append(ptr));
             subSchema = writer.process(report, holder).getValue();
             if (subSchema.getType() == Schema.Type.UNION)
                 throw new ProcessingException("union within union is illegal");

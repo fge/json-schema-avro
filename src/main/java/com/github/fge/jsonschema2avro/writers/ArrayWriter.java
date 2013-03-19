@@ -3,9 +3,9 @@ package com.github.fge.jsonschema2avro.writers;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.fge.jsonschema.exceptions.ProcessingException;
 import com.github.fge.jsonschema.jsonpointer.JsonPointer;
-import com.github.fge.jsonschema.processors.data.SchemaHolder;
 import com.github.fge.jsonschema.report.ProcessingReport;
 import com.github.fge.jsonschema.tree.SchemaTree;
+import com.github.fge.jsonschema.util.ValueHolder;
 import com.github.fge.jsonschema2avro.AvroWriterProcessor;
 import org.apache.avro.Schema;
 
@@ -33,7 +33,8 @@ public final class ArrayWriter
             : JsonPointer.of("additionalItems");
 
         final SchemaTree subTree = tree.append(ptr);
-        final SchemaHolder input = new SchemaHolder(subTree);
+        final ValueHolder<SchemaTree> input
+            = ValueHolder.hold("schema", subTree);
         final Schema itemsSchema = writer.process(report, input).getValue();
         return Schema.createArray(itemsSchema);
     }
