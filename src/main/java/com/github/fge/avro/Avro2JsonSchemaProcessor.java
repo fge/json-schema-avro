@@ -27,6 +27,14 @@ public final class Avro2JsonSchemaProcessor
             final String s = node.toString();
             avroSchema = new Schema.Parser().parse(s);
         } catch (AvroRuntimeException e) {
+            /*
+             * There is a SchemaParseException, but it does not cover all cases.
+             *
+             * This schema, for instance, throws a AvroRuntimeException:
+             *
+             * { "type": [ "null", "null" ] }
+             *
+             */
             throw new IllegalAvroSchemaException(e);
         }
 
