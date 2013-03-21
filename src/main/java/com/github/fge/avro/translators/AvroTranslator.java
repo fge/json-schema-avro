@@ -2,10 +2,10 @@ package com.github.fge.avro.translators;
 
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.github.fge.avro.MutableTree;
+import com.github.fge.jackson.JacksonUtils;
 import com.github.fge.jsonschema.exceptions.ProcessingException;
 import com.github.fge.jsonschema.report.ProcessingMessage;
 import com.github.fge.jsonschema.report.ProcessingReport;
-import com.github.fge.jsonschema.util.JacksonUtils;
 import org.apache.avro.Schema;
 
 public abstract class AvroTranslator

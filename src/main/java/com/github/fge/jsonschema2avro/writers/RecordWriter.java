@@ -1,7 +1,7 @@
 package com.github.fge.jsonschema2avro.writers;
 
+import com.github.fge.jackson.jsonpointer.JsonPointer;
 import com.github.fge.jsonschema.exceptions.ProcessingException;
-import com.github.fge.jsonschema.jsonpointer.JsonPointer;
 import com.github.fge.jsonschema.report.ProcessingReport;
 import com.github.fge.jsonschema.tree.SchemaTree;
 import com.github.fge.jsonschema.util.ValueHolder;

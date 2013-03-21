@@ -1,6 +1,7 @@
 package com.github.fge.avro;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.github.fge.jackson.JsonLoader;
 import com.github.fge.jsonschema.cfg.ValidationConfiguration;
 import com.github.fge.jsonschema.exceptions.ProcessingException;
 import com.github.fge.jsonschema.processors.syntax.SyntaxValidator;
@@ -9,7 +10,6 @@ import com.github.fge.jsonschema.report.ProcessingReport;
 import com.github.fge.jsonschema.tree.JsonTree;
 import com.github.fge.jsonschema.tree.SchemaTree;
 import com.github.fge.jsonschema.tree.SimpleJsonTree;
-import com.github.fge.jsonschema.util.JsonLoader;
 import com.github.fge.jsonschema.util.ValueHolder;
 import com.google.common.collect.Lists;
 import org.testng.annotations.BeforeMethod;

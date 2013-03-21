@@ -1,6 +1,6 @@
 package com.github.fge.avro.translators;
 
-import com.github.fge.jsonschema.util.NodeType;
+import com.github.fge.jackson.NodeType;
 import com.google.common.collect.ImmutableMap;
 import org.apache.avro.Schema;
 
