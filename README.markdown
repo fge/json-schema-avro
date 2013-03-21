@@ -3,7 +3,7 @@
 <p>The license of this project is LGPLv3 or later. See file src/main/resources/LICENSE for the full
 text.</p>
 
-<p>The current version is <b>0.1.1</b>.</p>
+<p>The current version is <b>0.1.2</b>.</p>
 
 <h1>What this is</h1>
 

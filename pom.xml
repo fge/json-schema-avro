@@ -20,7 +20,7 @@
     <groupId>com.github.fge</groupId>
     <artifactId>json-schema-avro</artifactId>
     <name>json-schema-avro</name>
-    <version>0.1.2</version>
+    <version>0.1.3-SNAPSHOT</version>
     <packaging>jar</packaging>
     <description>Avro Schema to JSON Schema conversion and back</description>
     <url>https://github.com/fge/json-schema-avro</url>
