@@ -7,7 +7,8 @@ import com.github.fge.jackson.JacksonUtils;
 import com.github.fge.jackson.NodeType;
 import com.github.fge.jackson.jsonpointer.JsonPointer;
 import com.github.fge.jsonschema.util.AsJson;
-import net.jcip.annotations.NotThreadSafe;
+
+import javax.annotation.concurrent.NotThreadSafe;
 
 @NotThreadSafe
 public final class MutableTree

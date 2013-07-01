@@ -70,7 +70,7 @@
         <dependency>
             <groupId>com.github.fge</groupId>
             <artifactId>json-schema-validator</artifactId>
-            <version>2.1.2</version>
+            <version>2.1.7</version>
         </dependency>
         <dependency>
             <groupId>org.apache.avro</groupId>
@@ -98,7 +98,7 @@
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>6.8</version>
+            <version>6.8.5</version>
             <scope>test</scope>
             <exclusions>
                 <exclusion>

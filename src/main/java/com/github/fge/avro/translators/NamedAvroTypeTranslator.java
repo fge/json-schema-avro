@@ -3,8 +3,6 @@ package com.github.fge.avro.translators;
 import com.github.fge.avro.MutableTree;
 import com.github.fge.jackson.jsonpointer.JsonPointer;
 import com.github.fge.jsonschema.exceptions.ProcessingException;
-import com.github.fge.jsonschema.exceptions.unchecked.ProcessingError;
-import com.github.fge.jsonschema.report.ProcessingMessage;
 import com.github.fge.jsonschema.report.ProcessingReport;
 import org.apache.avro.Schema;
 
@@ -46,9 +44,8 @@ abstract class NamedAvroTypeTranslator
     {
         try {
             return new URI(null, null, pointer.toString()).toString();
-        } catch (URISyntaxException ignored) {
-            throw new ProcessingError(new ProcessingMessage()
-                .message("How on earth did I get there???"));
+        } catch (URISyntaxException e) {
+            throw new IllegalStateException("How did I get there??", e);
         }
     }
 }
