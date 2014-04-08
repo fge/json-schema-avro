@@ -5,3 +5,4 @@ META-INF
 out
 build
 .gradle
+classes
