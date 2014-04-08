@@ -91,7 +91,7 @@ public abstract class AvroTranslationsTest
             = ValueHolder.<JsonTree>hold(new SimpleJsonTree(avroSchema));
 
         final ValueHolder<SchemaTree> output = PROCESSOR.process(report, input);
-        assertEquals(output.getValue().getBaseNode(), jsonSchema);
+        assertTrue(output.getValue().getBaseNode().equals(jsonSchema));
 
         assertTrue(VALIDATOR.schemaIsValid(jsonSchema));
     }
