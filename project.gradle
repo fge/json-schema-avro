@@ -20,7 +20,7 @@
  * Project-specific settings. Unfortunately we cannot put the name in there!
  */
 group = "com.github.fge";
-version = "0.1.3";
+version = "0.1.4-SNAPSHOT";
 sourceCompatibility = "1.6";
 targetCompatibility = "1.6"; // defaults to sourceCompatibility
 
