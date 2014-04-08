@@ -18,12 +18,12 @@
 
 package com.github.fge.jsonschema2avro;
 
-import com.github.fge.jsonschema.exceptions.ProcessingException;
-import com.github.fge.jsonschema.processing.Processor;
-import com.github.fge.jsonschema.processing.ProcessorSelector;
-import com.github.fge.jsonschema.report.ProcessingReport;
-import com.github.fge.jsonschema.tree.SchemaTree;
-import com.github.fge.jsonschema.util.ValueHolder;
+import com.github.fge.jsonschema.core.exceptions.ProcessingException;
+import com.github.fge.jsonschema.core.processing.Processor;
+import com.github.fge.jsonschema.core.processing.ProcessorSelector;
+import com.github.fge.jsonschema.core.report.ProcessingReport;
+import com.github.fge.jsonschema.core.tree.SchemaTree;
+import com.github.fge.jsonschema.core.util.ValueHolder;
 import com.github.fge.jsonschema2avro.writers.ArrayWriter;
 import com.github.fge.jsonschema2avro.writers.EnumWriter;
 import com.github.fge.jsonschema2avro.writers.MapWriter;

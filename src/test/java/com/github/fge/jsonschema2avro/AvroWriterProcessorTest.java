@@ -20,11 +20,11 @@ package com.github.fge.jsonschema2avro;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.fge.jackson.JsonLoader;
-import com.github.fge.jsonschema.exceptions.ProcessingException;
-import com.github.fge.jsonschema.report.ProcessingReport;
-import com.github.fge.jsonschema.tree.CanonicalSchemaTree;
-import com.github.fge.jsonschema.tree.SchemaTree;
-import com.github.fge.jsonschema.util.ValueHolder;
+import com.github.fge.jsonschema.core.exceptions.ProcessingException;
+import com.github.fge.jsonschema.core.report.ProcessingReport;
+import com.github.fge.jsonschema.core.tree.CanonicalSchemaTree;
+import com.github.fge.jsonschema.core.tree.SchemaTree;
+import com.github.fge.jsonschema.core.util.ValueHolder;
 import com.google.common.collect.Lists;
 import org.apache.avro.Schema;
 import org.testng.annotations.BeforeMethod;

@@ -20,12 +20,12 @@ package com.github.fge.avro;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.fge.avro.translators.AvroTranslators;
-import com.github.fge.jsonschema.exceptions.ProcessingException;
-import com.github.fge.jsonschema.processing.RawProcessor;
-import com.github.fge.jsonschema.report.ProcessingReport;
-import com.github.fge.jsonschema.tree.CanonicalSchemaTree;
-import com.github.fge.jsonschema.tree.JsonTree;
-import com.github.fge.jsonschema.tree.SchemaTree;
+import com.github.fge.jsonschema.core.exceptions.ProcessingException;
+import com.github.fge.jsonschema.core.processing.RawProcessor;
+import com.github.fge.jsonschema.core.report.ProcessingReport;
+import com.github.fge.jsonschema.core.tree.CanonicalSchemaTree;
+import com.github.fge.jsonschema.core.tree.JsonTree;
+import com.github.fge.jsonschema.core.tree.SchemaTree;
 import org.apache.avro.AvroRuntimeException;
 import org.apache.avro.Schema;
 

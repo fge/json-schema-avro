@@ -18,9 +18,10 @@
 
 package com.github.fge.jsonschema2avro;
 
-import com.github.fge.jsonschema.report.MessageProvider;
-import com.github.fge.jsonschema.report.ProcessingMessage;
-import com.github.fge.jsonschema.tree.SchemaTree;
+
+import com.github.fge.jsonschema.core.report.MessageProvider;
+import com.github.fge.jsonschema.core.report.ProcessingMessage;
+import com.github.fge.jsonschema.core.tree.SchemaTree;
 
 public final class AvroPayload
     implements MessageProvider

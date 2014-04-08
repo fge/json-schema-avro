@@ -20,7 +20,7 @@ package com.github.fge.avro.translators;
 
 import com.github.fge.avro.MutableTree;
 import com.github.fge.jackson.NodeType;
-import com.github.fge.jsonschema.report.ProcessingReport;
+import com.github.fge.jsonschema.core.report.ProcessingReport;
 import org.apache.avro.Schema;
 
 final class FixedTranslator

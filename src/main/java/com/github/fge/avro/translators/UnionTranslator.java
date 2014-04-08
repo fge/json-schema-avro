@@ -21,8 +21,8 @@ package com.github.fge.avro.translators;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.github.fge.avro.MutableTree;
 import com.github.fge.jackson.jsonpointer.JsonPointer;
-import com.github.fge.jsonschema.exceptions.ProcessingException;
-import com.github.fge.jsonschema.report.ProcessingReport;
+import com.github.fge.jsonschema.core.exceptions.ProcessingException;
+import com.github.fge.jsonschema.core.report.ProcessingReport;
 import org.apache.avro.Schema;
 
 import java.util.List;

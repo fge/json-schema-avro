@@ -33,7 +33,7 @@ project.ext {
  */
 dependencies {
     compile(group: "com.github.fge", name: "json-schema-validator",
-        version: "2.1.7");
+        version: "2.1.9-SNAPSHOT");
     compile(group: "org.apache.avro", name: "avro", version: "1.7.4") {
         exclude(group: "org.slf4j", module: "slf4j-api");
         exclude(group: "org.apache.commons", module: "commons-compress");

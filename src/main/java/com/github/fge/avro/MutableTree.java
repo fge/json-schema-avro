@@ -24,7 +24,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.github.fge.jackson.JacksonUtils;
 import com.github.fge.jackson.NodeType;
 import com.github.fge.jackson.jsonpointer.JsonPointer;
-import com.github.fge.jsonschema.util.AsJson;
+import com.github.fge.jsonschema.core.util.AsJson;
 
 import javax.annotation.concurrent.NotThreadSafe;
 

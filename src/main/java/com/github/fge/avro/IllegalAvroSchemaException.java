@@ -18,7 +18,8 @@
 
 package com.github.fge.avro;
 
-import com.github.fge.jsonschema.exceptions.ProcessingException;
+
+import com.github.fge.jsonschema.core.exceptions.ProcessingException;
 
 public final class IllegalAvroSchemaException
     extends ProcessingException
