@@ -88,13 +88,9 @@ public abstract class AvroTranslationsTest
     {
         JsonTree tree = new SimpleJsonTree(avroSchema);
         final ValueHolder<JsonTree> input = ValueHolder.hold(tree);
-
         final ValueHolder<SchemaTree> output = PROCESSOR.process(report, input);
 
-        System.out.println(output.getValue().getBaseNode());
-        System.out.println(jsonSchema);
         assertTrue(VALIDATOR.schemaIsValid(jsonSchema));
-        System.out.println(jsonSchema.equals(output.getValue().getBaseNode()));
         assertTrue(output.getValue().getBaseNode().equals(jsonSchema));
     }
 }
