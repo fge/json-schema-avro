@@ -37,6 +37,7 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import static org.testng.Assert.*;
 
@@ -79,20 +80,17 @@ public abstract class AvroTranslationsTest
     }
 
     @Test(
-        dataProvider = "testData",
-        invocationCount = 10,
-        threadPoolSize = 4
+        dataProvider = "testData"
     )
     public final void conversionIsCorrectlyPerformed(final JsonNode avroSchema,
         final JsonNode jsonSchema)
         throws ProcessingException
     {
-        final ValueHolder<JsonTree> input
-            = ValueHolder.<JsonTree>hold(new SimpleJsonTree(avroSchema));
-
+        JsonTree tree = new SimpleJsonTree(avroSchema);
+        final ValueHolder<JsonTree> input = ValueHolder.hold(tree);
         final ValueHolder<SchemaTree> output = PROCESSOR.process(report, input);
-        assertTrue(output.getValue().getBaseNode().equals(jsonSchema));
 
         assertTrue(VALIDATOR.schemaIsValid(jsonSchema));
+        assertTrue(output.getValue().getBaseNode().equals(jsonSchema));
     }
 }

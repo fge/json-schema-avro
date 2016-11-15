@@ -31,30 +31,27 @@ import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.map.ObjectMapper;
 
 import java.io.IOException;
+import java.util.LinkedList;
 import java.util.List;
 
 final class RecordTranslator
-    extends NamedAvroTypeTranslator
-{
+        extends NamedAvroTypeTranslator {
     private static final ObjectMapper OLD_MAPPER = new ObjectMapper();
 
     private static final AvroTranslator INSTANCE = new RecordTranslator();
 
-    private RecordTranslator()
-    {
+    private RecordTranslator() {
         super(Schema.Type.RECORD);
     }
 
-    public static AvroTranslator getInstance()
-    {
+    public static AvroTranslator getInstance() {
         return INSTANCE;
     }
 
     @Override
     protected void doTranslate(final Schema avroSchema,
-        final MutableTree jsonSchema, final ProcessingReport report)
-        throws ProcessingException
-    {
+                               final MutableTree jsonSchema, final ProcessingReport report)
+            throws ProcessingException {
         final List<Schema.Field> fields = avroSchema.getFields();
 
         if (fields.isEmpty()) {
@@ -66,13 +63,11 @@ final class RecordTranslator
 
         final JsonPointer pwd = jsonSchema.getPointer();
 
-        if (avroSchema.getDoc() != null)
+        if (avroSchema.getDoc() != null) {
             jsonSchema.getCurrentNode().put("description", avroSchema.getDoc());
+        }
 
         jsonSchema.setType(NodeType.OBJECT);
-
-        final ArrayNode required = FACTORY.arrayNode();
-        jsonSchema.getCurrentNode().put("required", required);
 
         jsonSchema.getCurrentNode().put("additionalProperties", false);
 
@@ -91,12 +86,15 @@ final class RecordTranslator
          * FIXME: "default" and readers'/writers' schema? Here, even with a
          * default value, the record field is marked as required.
          */
-        for (final Schema.Field field: fields) {
+        final List<String> requiredFields = new LinkedList<String>();
+        for (final Schema.Field field : fields) {
             fieldName = field.name();
             fieldSchema = field.schema();
             fieldType = fieldSchema.getType();
             translator = AvroTranslators.getTranslator(fieldType);
-            required.add(fieldName);
+            if (field.defaultValue() == null) {
+                requiredFields.add(fieldName);
+            }
             ptr = JsonPointer.of("properties", fieldName);
             propertyNode = FACTORY.objectNode();
             properties.put(fieldName, propertyNode);
@@ -105,14 +103,22 @@ final class RecordTranslator
             translator.translate(fieldSchema, jsonSchema, report);
             jsonSchema.setPointer(pwd);
         }
+
+        if (requiredFields.size() > 0) {
+            final ArrayNode required = FACTORY.arrayNode();
+            for (String requiredFieldName : requiredFields) {
+                required.add(requiredFieldName);
+            }
+            jsonSchema.getCurrentNode().put("required", required);
+        }
     }
 
     private static void injectDefault(final ObjectNode propertyNode,
-        final Schema.Field field)
-    {
+                                      final Schema.Field field) {
         final JsonNode value = field.defaultValue();
-        if (value == null)
+        if (value == null) {
             return;
+        }
 
         /*
          * Write the value to a string using a 1.8 writer, and read it from that
