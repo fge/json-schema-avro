@@ -72,7 +72,7 @@
                 },
                 "record:org.apache.avro.FooBarSpecificRecord": {
                     "type": "object",
-                    "required": [ "id", "relatedids", "typeEnum" ],
+                    "required": [ "id", "relatedids" ],
                     "additionalProperties": false,
                     "properties": {
                         "id": {
@@ -428,7 +428,6 @@
             "definitions": {
                 "record:org.apache.avro.mapreduce.TextStats": {
                     "type": "object",
-                    "required": [ "name", "count" ],
                     "additionalProperties": false,
                     "properties": {
                         "name": {
