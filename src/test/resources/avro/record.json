@@ -21,7 +21,7 @@
                 "record:LongList": {
                     "type": "object",
                     "additionalProperties": false,
-                    "required": [ "value", "next" ],
+                    "required": [ "value" ],
                     "properties": {
                         "value": {
                             "type": "integer",

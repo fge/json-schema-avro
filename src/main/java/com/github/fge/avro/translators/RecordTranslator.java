@@ -31,6 +31,7 @@ import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.map.ObjectMapper;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 
 final class RecordTranslator
@@ -96,7 +97,9 @@ final class RecordTranslator
             fieldSchema = field.schema();
             fieldType = fieldSchema.getType();
             translator = AvroTranslators.getTranslator(fieldType);
-            required.add(fieldName);
+            if(isRequiredField(fieldSchema)) {
+                required.add(fieldName);
+            }
             ptr = JsonPointer.of("properties", fieldName);
             propertyNode = FACTORY.objectNode();
             properties.put(fieldName, propertyNode);
@@ -105,6 +108,18 @@ final class RecordTranslator
             translator.translate(fieldSchema, jsonSchema, report);
             jsonSchema.setPointer(pwd);
         }
+    }
+
+    private boolean isRequiredField(Schema fieldSchema) {
+        if(fieldSchema.getType() != Schema.Type.UNION) {
+            return true;
+        }
+        for(Schema typeSchema: fieldSchema.getTypes()) {
+            if(Schema.Type.NULL == typeSchema.getType()) {
+                return false;
+            }
+        }
+        return true;
     }
 
     private static void injectDefault(final ObjectNode propertyNode,
