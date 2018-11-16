@@ -1,0 +1,25 @@
+[
+    {
+        "jsonSchema": {
+            "type": "object",
+            "definitions": {
+                "customNumber": {
+                    "type": "number"
+                }
+            },
+            "properties": {
+                "someNumber": {
+                    "$ref": "#/definitions/customNumber"
+                }
+            },
+            "additionalProperties": false
+        },
+        "avroSchema": {
+            "type": "record",
+            "name": "record0",
+            "fields": [
+                { "name": "someNumber", "type": "double" }
+            ]
+        }
+    }
+]

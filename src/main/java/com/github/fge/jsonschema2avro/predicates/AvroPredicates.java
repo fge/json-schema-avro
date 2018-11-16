@@ -211,6 +211,18 @@ public final class AvroPredicates
         };
     }
 
+    public static Predicate<AvroPayload> typeRef()
+    {
+        return new Predicate<AvroPayload>()
+        {
+            @Override
+            public boolean apply(final AvroPayload input)
+            {
+                return schemaNode(input).path("$ref").isTextual();
+            }
+        };
+    }
+
     private static JsonNode schemaNode(final AvroPayload payload)
     {
         return payload.getTree().getNode();
