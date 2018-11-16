@@ -24,13 +24,7 @@ import com.github.fge.jsonschema.core.processing.ProcessorSelector;
 import com.github.fge.jsonschema.core.report.ProcessingReport;
 import com.github.fge.jsonschema.core.tree.SchemaTree;
 import com.github.fge.jsonschema.core.util.ValueHolder;
-import com.github.fge.jsonschema2avro.writers.ArrayWriter;
-import com.github.fge.jsonschema2avro.writers.EnumWriter;
-import com.github.fge.jsonschema2avro.writers.MapWriter;
-import com.github.fge.jsonschema2avro.writers.RecordWriter;
-import com.github.fge.jsonschema2avro.writers.SimpleTypeWriter;
-import com.github.fge.jsonschema2avro.writers.SimpleUnionWriter;
-import com.github.fge.jsonschema2avro.writers.TypeUnionWriter;
+import com.github.fge.jsonschema2avro.writers.*;
 import org.apache.avro.Schema;
 
 import static com.github.fge.jsonschema2avro.predicates.AvroPredicates.*;
@@ -50,6 +44,7 @@ public final class AvroWriterProcessor
             .when(record()).then(new RecordWriter())
             .when(simpleUnion()).then(SimpleUnionWriter.getInstance())
             .when(typeUnion()).then(TypeUnionWriter.getInstance())
+            .when(typeRef()).then(RefWriter.getInstance())
             .getProcessor();
     }
 
